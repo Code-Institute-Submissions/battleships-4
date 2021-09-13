@@ -28,7 +28,6 @@ def add_to_list():
     if (r in coordinates):
         add_to_list()
     else:
-        print(r)
         coordinates.append(r)
 
 
@@ -48,9 +47,34 @@ def hide_ships():
     print(f"{amount} ships hidden. Good luck!")
 
 
+def player_guess():
+    reselect = True
+    while reselect:
+        guess = str(input("Guess coordinate: "))
+        if len(guess) < 2:
+            print("Too few characters in coordinate")
+            player_guess()
+        elif len(guess) > 2:
+            print("Too many characters in coordinate")
+            player_guess()
+        else:
+            col = guess[0].capitalize()
+            if (col in LETTERS):
+                try:
+                    x = LETTERS.index(col)
+                    reselect = False
+                except TypeError:
+                    print("Invalid coordinate")
+            else:
+                print("Invalid coordinate.")
+    
+    
+
 def main():
     print_board(board)
     hide_ships()
     print(coordinates)
+    player_guess()
+
 
 main()
