@@ -49,10 +49,13 @@ def hide_ships():
 
 def player_guess():
     guess = str(input("Guess coordinate: "))
-    check_guess(guess)
+    check_length(guess)
+    check_col(guess)
+    check_row(guess)
 
 
-def check_guess(guess):
+
+def check_length(guess):
     if len(guess) < 2:
         print("Too few characters in coordinate")
         player_guess()
@@ -60,15 +63,29 @@ def check_guess(guess):
         print("Too many characters in coordinate")
         player_guess()
     else:
-        col = guess[0].capitalize()
-        if (col in LETTERS):
-            try:
-                x = LETTERS.index(col)
-            except TypeError:
-                print("Invalid coordinate")
-        else:
-            print("Invalid coordinate.")
-            player_guess()
+        pass
+
+
+def check_col(guess):
+    col = guess[0].capitalize()
+    if (col in LETTERS):
+        try:
+            x = LETTERS.index(col)
+            return x
+        except TypeError:
+            print("Invalid coordinate")
+    else:
+        print("Invalid coordinate.")
+        player_guess()
+
+
+def check_row(guess):
+    row = int(guess[1])
+    if not 1 <= row < 6:
+        print("Invalid coordinate")
+        player_guess()
+    else:
+        pass
 
 
 def main():
