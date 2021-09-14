@@ -3,10 +3,11 @@ from random import randint
 LETTERS = [" ", "A", "B", "C", "D", "E"]
 board = []
 coordinates = []
+used = []
 
 board.append(LETTERS)
 for i in range(0,5):
-    board.append([f"{i + 1}"] + ["0"] * 5)
+    board.append([f"{i + 1}"] + ["O"] * 5)
 
 
 def print_board(board):
@@ -52,9 +53,13 @@ def player_guess():
     check_length(guess)
     check_col(guess)
     check_row(guess)
-    shot = str(LETTERS.index(guess[0].capitalize())) + str(guess[1])
-    shot = int(shot)
-    check_hit(shot)
+    number = str(LETTERS.index(guess[0].capitalize())) + guess[1]
+    number = int(number)
+    shot = [LETTERS.index(guess[0].capitalize()), int(guess[1])]
+    print(number)
+    print(shot)
+    print(coordinates)
+    check_hit(number, shot)
 
 
 def check_length(guess):
@@ -89,11 +94,21 @@ def check_row(guess):
     else:
         pass
 
-def check_hit(shot):
-    if (shot in coordinates):
+
+def check_hit(number, shot):
+    if (number in coordinates):
         print("Hit!")
+        coordinates.remove(number)
+        used.append(number)
+        board[shot[1]][shot[0]] = "X"
+        print_board(board)
+        player_guess()
     else:
         print("Miss!")
+        used.append(number)
+        board[shot[1]][shot[0]] = "0"
+        print_board(board)
+        player_guess()
 
 
 def main():
