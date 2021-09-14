@@ -119,7 +119,7 @@ def check_col(guess):
     col = guess[0].capitalize()
     if (col in LETTERS):
         try:
-            x = LETTERS.index(col)
+            LETTERS.index(col)
         except TypeError:
             print("Invalid coordinate")
     else:
