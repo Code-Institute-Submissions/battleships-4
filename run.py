@@ -52,7 +52,9 @@ def player_guess():
     check_length(guess)
     check_col(guess)
     check_row(guess)
-
+    shot = str(LETTERS.index(guess[0].capitalize())) + str(guess[1])
+    shot = int(shot)
+    check_hit(shot)
 
 
 def check_length(guess):
@@ -86,6 +88,12 @@ def check_row(guess):
         player_guess()
     else:
         pass
+
+def check_hit(shot):
+    if (shot in coordinates):
+        print("Hit!")
+    else:
+        print("Miss!")
 
 
 def main():
