@@ -34,19 +34,20 @@ def add_to_list():
 
 
 def hide_ships():
-    message = "How many ships would you like hidden? "
-    amount = input(message)
-    try:
-        amount = int(amount)
-    except ValueError:
-        message = "Please enter integer values only: "
-    else:
-        valid = 2 < amount < 7
-        if not valid:
-            message = "Enter an integer between 3 and 6: "
-    for i in range(0, amount):
-        add_to_list()
-    print(f"{amount} ships hidden. Good luck!")
+    while True:
+        amount = input("How many ships would you like hidden? ")
+        try:
+            amount = int(amount)
+        except ValueError:
+            print("Please enter a number between 3 and 6: ")
+            continue
+        if 3 <= amount <= 6:
+            for i in range(0, amount):
+                add_to_list()
+            print(f"{amount} ships hidden. Good Luck!")
+            break
+        else:
+            print("Please enter a number between 3 and 6: ")
 
 
 def player_guess():
