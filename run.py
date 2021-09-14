@@ -191,7 +191,6 @@ def main():
     create_board()
     print_board(board)
     hide_ships()
-    print(coordinates)
     player_guess()
 
 
