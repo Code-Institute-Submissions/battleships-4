@@ -59,7 +59,7 @@ def hide_ships():
     Ensures valid input
     """
     while True:
-        amount = input("How many ships would you like hidden? ")
+        amount = input("How many ships would you like hidden? \n")
         try:
             amount = int(amount)
         except ValueError:
@@ -80,7 +80,7 @@ def player_guess():
     coverts it into a 2 digit integer for calculation
     and a point for representation on the visual board
     """
-    guess = str(input("Guess coordinates (in the form A1): "))
+    guess = str(input("Guess coordinates (in the form A1): \n"))
 
     # Checks that the players guess is legal
     check_length(guess)
