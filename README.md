@@ -80,7 +80,8 @@ Throughout the development of this project, there were some bugs and issues that
 <a name="deployment"></a>
 ## Deployment
 
-    - To prep the application for deployment to Heroku I had to add a newline (\n) character at the end of every input field for proper display.
+    - To prep the application for deployment to Heroku I had to add a newline (\n) 
+    character at the end of every input field for proper display.
     - I then went to Heroku itself and added the PORT: 8000 Config Var.
     - The buildpacks used for this application are Python and NodeJS, in that order.
 
