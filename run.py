@@ -64,6 +64,7 @@ def player_guess():
     check_row(guess)
     number = str(LETTERS.index(guess[0].capitalize())) + guess[1]
     number = int(number)
+    check_used(number)
     shot = [LETTERS.index(guess[0].capitalize()), int(guess[1])]
     check_hit(number, shot)
 
@@ -96,6 +97,14 @@ def check_row(guess):
     row = int(guess[1])
     if not 1 <= row < 6:
         print("Invalid coordinate")
+        player_guess()
+    else:
+        pass
+
+
+def check_used(number):
+    if (number in used):
+        print("You've already shot there!")
         player_guess()
     else:
         pass
