@@ -44,7 +44,8 @@ def random_point():
 
 def add_to_list():
     """
-    Generates new points and adds them to the coordinates list with no duplicates
+    Generates new points and adds them to the coordinates list
+    with no duplicates
     """
     r = random_point()
     if (r in coordinates):
@@ -112,7 +113,8 @@ def check_length(guess):
 
 def check_col(guess):
     """
-    Takes the first character of the player's guess and compares it to the LETTERS list
+    Takes the first character of the player's guess,
+    then compares it to the LETTERS list
     """
     col = guess[0].capitalize()
     if (col in LETTERS):
