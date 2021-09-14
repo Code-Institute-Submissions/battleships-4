@@ -69,7 +69,7 @@ def hide_ships():
         if 3 <= amount <= 6:
             for i in range(0, amount):
                 add_to_list()
-            print(f"{amount} ships hidden. Good Luck!")
+            print(f"{amount} ships hidden. Good Luck!\n")
             break
         else:
             print("Please enter a number between 3 and 6: ")
@@ -166,7 +166,7 @@ def check_hit(number, shot):
     Checks if a shot hits or not
     """
     if (number in coordinates):
-        print("Hit!")
+        print("Hit!\n")
         coordinates.remove(number)
         print(f"{len(coordinates)} ships left.")
 
@@ -178,7 +178,7 @@ def check_hit(number, shot):
         print_board(board)
         player_guess()
     else:
-        print("Miss!")
+        print("Miss!\n")
         print(f"{len(coordinates)} ships left.")
 
         used.append(number)
