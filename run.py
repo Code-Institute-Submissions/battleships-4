@@ -118,16 +118,13 @@ def check_win():
 
 
 def replay():
-    print("Would you like to play again? Y/N")
+    print('If you would like to play again, enter "Y"')
     replay = input()
     if replay.capitalize() == "Y":
         initialise()
         main()
-    elif replay.capitalize() == "N":
-        sys.exit()
     else:
-        print("Input not recognised, try again.")
-        replay()
+        sys.exit()
 
 
 def check_hit(number, shot):
