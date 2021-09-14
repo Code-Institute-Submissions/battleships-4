@@ -6,9 +6,16 @@ board = []
 coordinates = []
 used = []
 
-board.append(LETTERS)
-for i in range(0,5):
-    board.append([f"{i + 1}"] + ["O"] * 5)
+
+def initialise():
+    board.clear()
+    used.clear()
+
+
+def create_board():
+    board.append(LETTERS)
+    for i in range(0, 5):
+        board.append([f"{i + 1}"] + ["O"] * 5)
 
 
 def print_board(board):
@@ -105,6 +112,7 @@ def replay():
     print("Would you like to play again? Y/N")
     replay = input()
     if replay.capitalize() == "Y":
+        initialise()
         main()
     elif replay.capitalize() == "N":
         sys.exit()
@@ -117,7 +125,6 @@ def check_hit(number, shot):
     if (number in coordinates):
         print("Hit!")
         coordinates.remove(number)
-        print(coordinates)
         used.append(number)
         board[shot[1]][shot[0]] = "X"
         check_win()
@@ -132,6 +139,7 @@ def check_hit(number, shot):
 
 
 def main():
+    create_board()
     print_board(board)
     hide_ships()
     print(coordinates)
