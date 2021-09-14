@@ -1,4 +1,5 @@
 from random import randint
+import sys
 
 LETTERS = [" ", "A", "B", "C", "D", "E"]
 board = []
@@ -56,9 +57,6 @@ def player_guess():
     number = str(LETTERS.index(guess[0].capitalize())) + guess[1]
     number = int(number)
     shot = [LETTERS.index(guess[0].capitalize()), int(guess[1])]
-    print(number)
-    print(shot)
-    print(coordinates)
     check_hit(number, shot)
 
 
@@ -95,12 +93,33 @@ def check_row(guess):
         pass
 
 
+def check_win():
+    if (coordinates == []):
+        print("You sank my battleships!")
+        print("Congratulations!")
+        replay()
+
+
+def replay():
+    print("Would you like to play again? Y/N")
+    replay = input()
+    if replay.capitalize() == "Y":
+        main()
+    elif replay.capitalize() == "N":
+        sys.exit()
+    else:
+        print("Input not recognised, try again.")
+        replay()
+
+
 def check_hit(number, shot):
     if (number in coordinates):
         print("Hit!")
         coordinates.remove(number)
+        print(coordinates)
         used.append(number)
         board[shot[1]][shot[0]] = "X"
+        check_win()
         print_board(board)
         player_guess()
     else:
